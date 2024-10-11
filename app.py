@@ -1,47 +1,77 @@
+# Importing necessary libraries
+import os
 import streamlit as st
+from dotenv import load_dotenv
 from PyPDF2 import PdfReader
+from google.generativeai import GenerativeModel
+from PIL import Image
+import streamlit_vertical_space  # Custom module for vertical spacing (you might need to implement or install this)
 
-# Function to read PDF content
-def read_pdf(file):
-    try:
-        reader = PdfReader(file)
-        text = ""
-        for page in reader.pages:
-            text += page.extract_text()
-        return text
-    except Exception as e:
-        return f"Error reading PDF: {e}"
+# Load environment variables from the .env file
+load_dotenv()
+
+# Set up the Google API key from the .env file
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+# Configure the GenerativeAI module with the Google API key
+GenerativeModel.configure(api_key=GOOGLE_API_KEY)
+
+# Load the Gemini Pro pre-trained model
+model = GenerativeModel(model="gemini-pro")
+
+# Function to get the response from Gemini Pro
+def get_gemini_response(input_text):
+    response = model.generate_content(input_text=input_text)
+    return response
+
+# Function to read and extract text from the uploaded PDF
+def input_pdf_text(uploaded_file):
+    reader = PdfReader(uploaded_file)
+    text = ""
+    for page in reader.pages:
+        text += page.extract_text()
+    return text
 
 # Streamlit app layout
 st.title("CareerCraft: ATS-Optimized Resume Analyzer")
-st.markdown("Upload your resume and a job description to get started!")
 
-# File uploader for resume
+# Upload resume
 resume_file = st.file_uploader("Upload your resume (PDF)", type=["pdf"])
 resume_text = ""
 if resume_file is not None:
-    resume_text = read_pdf(resume_file)
+    resume_text = input_pdf_text(resume_file)
     st.subheader("Resume Content:")
-    if resume_text:
-        st.write(resume_text)
-    else:
-        st.error("Could not read the resume file. Please try again.")
+    st.write(resume_text)
 
-# File uploader for job description
+# Upload job description
 job_file = st.file_uploader("Upload the job description (PDF)", type=["pdf"])
 job_text = ""
 if job_file is not None:
-    job_text = read_pdf(job_file)
+    job_text = input_pdf_text(job_file)
     st.subheader("Job Description Content:")
-    if job_text:
-        st.write(job_text)
-    else:
-        st.error("Could not read the job description file. Please try again.")
+    st.write(job_text)
 
-# Button to analyze the resume and job description
+# Input prompt for the Gemini Pro model (for ATS)
+input_prompt = """
+You are tasked with building an ATS (Applicant Tracking System) optimized for analyzing resumes against job descriptions.
+Expertise required includes: Software Engineering, Data Science, Full-Stack Development, Python, NLP, AI, and Machine Learning.
+Structure your response into the following sections:
+1. Percentage match with the job description.
+2. List of missing keywords in the resume.
+3. A profile summary based on the resume.
+"""
+
+# Button to trigger the analysis
 if st.button("Analyze Resume"):
     if resume_text and job_text:
-        # Placeholder for analysis logic (keyword matches, etc.)
-        st.success("Analyzing the resume against the job description... (This feature is under development!)")
+        st.success("Analyzing the resume against the job description...")
+
+        # Send the job description and resume to the model for analysis
+        gemini_response = get_gemini_response(input_prompt)
+
+        # Display the analysis response
+        st.subheader("Analysis Results:")
+        st.write(gemini_response)
     else:
-        st.error("Please upload both your resume and the job description to analyze.")
+        st.error("Please upload both your resume and the job description for analysis.")
+
