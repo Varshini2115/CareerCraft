@@ -3,9 +3,6 @@
 
 ## Project Overview
 
-### Title: 
-CareerCraft
-
 ### Objective:
 CareerCraft helps job seekers improve their resumes by providing an analysis that compares resumes to job descriptions, identifying areas for optimization for ATS (Applicant Tracking Systems). The tool increases the chances of a resume passing through ATS filters, leading to more interview opportunities.
 
