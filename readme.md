@@ -84,7 +84,7 @@ Using Google Gemini (Bard) API and advanced ATS algorithms, CareerCraft evaluate
 
 ### Clone the Repository:
 ```bash
-git clone https://github.com/yourusername/CareerCraft.git
+git clone https://github.com/Varshini2115/CareerCraft.git
 cd CareerCraft
 ```
 
