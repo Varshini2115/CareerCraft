@@ -1,0 +1,195 @@
+Here is a complete **Project Documentation** for your **CareerCraft** ATS Resume Analyzer project that you can put on GitHub:
+
+---
+
+# **CareerCraft: ATS-Optimized Resume Analyzer**
+
+## 1. Project Overview
+
+### **Title**: CareerCraft
+
+### **Objective**:
+The main goal of CareerCraft is to provide users with a platform that analyzes their resumes against job descriptions, offering insights to optimize their job applications for ATS (Applicant Tracking Systems). This helps job seekers increase their chances of securing interviews.
+
+### **Description**:
+CareerCraft leverages advanced ATS technology, coupled with the Google Gemini (Bard) API, to assess how well resumes match job descriptions. It analyzes the keywords, skills, and overall content of resumes, providing a matching percentage, missing keywords, and personalized recommendations. This solution empowers users to refine their applications and navigate their career paths more effectively.
+
+---
+
+## 2. Project Plan
+
+### **Milestones**:
+- Project Initialization & Setup
+- Google Gemini API Integration
+- PDF Resume Parsing and Text Extraction
+- ATS Matching and Feedback Algorithm
+- UI Design using Streamlit
+- Testing & Bug Fixing
+- Documentation and Deployment
+
+### **Timeline**:
+- **Week 1-2**: Project setup, API integration, PDF parsing implementation.
+- **Week 3-4**: Development of ATS matching algorithm, building the Streamlit UI.
+- **Week 5**: Testing, debugging, and refinement.
+- **Week 6**: Final deployment and documentation.
+
+### **Activities**:
+- Text extraction from resumes.
+- Integration with Google Gemini to analyze resumes.
+- ATS analysis, matching job descriptions with resumes.
+- Providing feedback to improve resumes.
+
+---
+
+## 3. Technical Specifications
+
+### **Technology Stack**:
+- **Programming Languages**: Python
+- **Frameworks**: Streamlit
+- **APIs**: Google Gemini (Bard API)
+- **Libraries**:
+  - `PyPDF2`: To extract text from PDF resumes.
+  - `Pillow (PIL)`: To display images.
+  - `dotenv`: For handling environment variables.
+  - `google.generativeai`: For interacting with Google Gemini API.
+
+### **System Architecture**:
+- **Client-side**: Streamlit UI for interacting with the user (e.g., uploading resumes, inputting job descriptions).
+- **Server-side**: PDF text extraction and API interaction to analyze resumes.
+  
+### **API Documentation**:
+- **Google Gemini API**: Used to analyze resumes by generating responses based on the text input. The API identifies missing keywords and matches resumes to job descriptions.
+
+### **Database Design**:
+- No database is used as this is a stateless application focused on ATS analysis in real-time.
+
+---
+
+## 4. Code Overview
+
+### **File Structure**:
+```
+├── app.py               # Main application script
+├── images/              # Folder containing image assets
+├── .env                 # Environment variables (Google API Key)
+├── README.md            # Project documentation
+└── requirements.txt     # Required Python packages
+```
+
+### **Key Modules**:
+- **`app.py`**: The core of the application, handling the UI, API calls, and PDF text extraction.
+- **`images/`**: Contains all the images used in the app.
+
+### **Important Functions**:
+- `input_pdf_text(uploaded_file)`: Extracts text from a PDF file.
+- `get_gemini_response(input)`: Sends text data to Google Gemini and retrieves the analysis.
+
+---
+
+## 5. Implementation Details
+
+### **Setup Instructions**:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/CareerCraft.git
+   cd CareerCraft
+   ```
+2. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Set up your **Google API Key**:
+   - Create a `.env` file and add your Google Gemini API key:
+     ```
+     GOOGLE_API_KEY=your_google_api_key
+     ```
+
+### **Execution**:
+- Run the application:
+  ```bash
+  streamlit run app.py
+  ```
+
+### **Configuration**:
+- Ensure the `.env` file contains your Google Gemini API key.
+
+---
+
+## 6. Testing and Validation
+
+### **Testing Strategy**:
+- **Unit Testing**: Ensured the PDF text extraction function works correctly with multiple sample resumes.
+- **Integration Testing**: Validated that the ATS feedback is accurate by comparing the results with various job descriptions.
+  
+### **Test Cases**:
+- Uploaded a resume and received feedback with missing keywords.
+- Tested different job descriptions to ensure accurate matching percentages.
+
+---
+
+## 7. Project Deliverables
+
+### **Code Files**:
+- GitHub Repository: [Link to repository]
+
+### **Screenshots**:
+![CareerCraft UI](images/sample_ui.png)
+
+### **Project Demonstration Video**:
+- [Project Demo](https://link-to-demo.com)
+
+---
+
+## 8. Challenges and Solutions
+
+### **Challenges Faced**:
+- **Issue**: Extracting text from resumes in different formats.
+  - **Solution**: Used `PyPDF2` to reliably extract text from most PDF formats.
+
+- **Issue**: Obtaining accurate feedback from Google Gemini for ATS analysis.
+  - **Solution**: Fine-tuned the prompts to focus on missing keywords and matching job descriptions.
+
+---
+
+## 9. Future Enhancements
+
+### **Improvements**:
+- Integration of other resume formats (e.g., .docx).
+- Support for multiple languages in resume analysis.
+- Enhanced visualization of ATS scores and feedback.
+
+---
+
+## 10. References
+
+### **References**:
+- [Streamlit Documentation](https://docs.streamlit.io/)
+- [Google Gemini API Documentation](https://cloud.google.com/ai/)
+
+### **External Resources**:
+- `PyPDF2` Library: [PyPDF2 Documentation](https://pypdf2.readthedocs.io/en/latest/)
+- `Pillow` (PIL): [Pillow Documentation](https://pillow.readthedocs.io/en/stable/)
+
+---
+
+## 11. GitHub Repository
+
+### **Repository Link**:
+[CareerCraft GitHub Repository](https://github.com/yourusername/CareerCraft)
+
+### **Commit History**:
+- Version control has been maintained using GitHub commits, documenting all significant changes and additions to the project.
+
+---
+
+## 12. Mentor Interaction & Feedback
+
+### **Mentor Interactions**:
+- Regular feedback was received regarding the UX design, prompt tuning for Gemini API, and feature improvements.
+  
+### **Final Approval**:
+- The project was approved after 90% completion, with suggestions for future enhancements.
+
+---
+
+This documentation should help users, developers, and contributors understand the structure and functionality of your project. Be sure to update the repository links and any placeholders before finalizing it on GitHub!
