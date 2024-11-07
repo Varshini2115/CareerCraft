@@ -21,11 +21,6 @@ Using Google Gemini (Bard) API and advanced ATS algorithms, CareerCraft evaluate
 - Testing, debugging, and optimization
 - Final documentation and deployment
 
-### Timeline:
-- **Week 1-2**: Setup, API integration, and PDF text extraction implementation
-- **Week 3-4**: Development of the ATS matching algorithm and UI
-- **Week 5**: Testing and bug fixing
-- **Week 6**: Final deployment and documentation
 
 ### Activities:
 - Text extraction from PDFs
